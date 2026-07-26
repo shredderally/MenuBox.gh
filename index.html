@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MenuBoxGh | Simple WhatsApp Shopfront for Ghana Businesses</title>
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #008080;
+            --dark: #1A1A1A;
+            --light: #F9F9F9;
+            --gray: #666666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eaeaea;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 24px;
+            color: var(--dark);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.9;
+        }
+
+        .hero {
+            padding: 80px 5%;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .features {
+            padding: 60px 5%;
+            background: white;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            border-radius: 8px;
+            background: var(--light);
+            border: 1px solid #eaeaea;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .pricing-section {
+            padding: 80px 5%;
+            text-align: center;
+            background: #ffffff;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .pricing-section h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .pricing-section p {
+            color: var(--gray);
+            margin-bottom: 40px;
+        }
+
+        .pricing-card {
+            max-width: 450px;
+            margin: 0 auto;
+            background: var(--light);
+            border: 2px solid var(--secondary);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .price span {
+            font-size: 16px;
+            color: var(--gray);
+            font-weight: normal;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eaeaea;
+            color: var(--dark);
+        }
+
+        .form-section {
+            padding: 80px 5%;
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: 60px;
+            border: 1px solid #eaeaea;
+        }
+
+        .form-section h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .form-section p {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            background: white;
+        }
+
+        .form-submit {
+            width: 100%;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .btn-group { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">MenuBox<span>Gh</span></div>
+        <a href="#demo-form" class="nav-cta">Get Started</a>
+    </header>
+
+    <section class="hero">
+        <h1>Simple WhatsApp Shopfront for <span>Ghana Businesses</span></h1>
+        <p>Get your own digital catalog. Customers view your products and send orders straight to your WhatsApp. No complicated apps. No high commissions.</p>
+        <div class="btn-group">
+            <a href="#demo-form" class="btn btn-primary">Book Setup</a>
+            <a href="https://wa.me/233504186141?text=Hello%20Northbound%20Holdings,%20I%20want%20to%20set%20up%20MenuBoxGh%20for%20my%20business." target="_blank" class="btn btn-secondary">Chat on WhatsApp</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>📱 Mobile Catalog</h3>
+            <p>Easy mobile catalog with your custom photos and prices. No coding required.</p>
+        </div>
+        <div class="feature-card">
+            <h3>📲 Direct Orders</h3>
+            <p>Orders come directly to your WhatsApp, making it easy to confirm and fulfill.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🔗 Custom Link & QR</h3>
+            <p>Get a custom link for your social media bios and a printable QR code for tables or storefronts.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🏪 Built for You</h3>
+            <p>Perfect for chop bars, restaurants, cake sellers, and small retail shops in Ghana.</p>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <h2>Transparent, Predictable Pricing</h2>
+        <p>Everything you need to automate your business orders.</p>
+        
+        <div class="pricing-card">
+            <h3>Standard Business Package</h3>
+            <div class="price">₵500 <span>one-time setup</span></div>
+            <p style="color: var(--dark); font-weight: bold; margin-bottom: 20px;">Then ₵100 / month</p>
+            <ul class="pricing-features">
+                <li>✅ Custom QR Code & Bio Link</li>
+                <li>✅ Full WhatsApp Shop Integration</li>
+                <li>✅ Instant Order Notifications</li>
+                <li>✅ Menu/Catalog Updates</li>
+                <li>✅ Dedicated Support via Northbound Holdings</li>
+            </ul>
+            <a href="#demo-form" class="btn btn-primary" style="display: block; text-align: center;">Get Started Now</a>
+        </div>
+    </section>
+
+    <section id="demo-form" class="form-section">
+        <h2>Get MenuBoxGh for Your Business</h2>
+        <p>Fill out the details below or chat with our team at Northbound Holdings directly.</p>
+        
+        <form onsubmit="redirectToWhatsApp(event)">
+            <div class="form-group">
+                <label for="business">Business Name</label>
+                <input type="text" id="business" required placeholder="e.g. Ama's Cakes or Pera Lounge">
+            </div>
+            <div class="form-group">
+                <label for="type">Business Type</label>
+                <select id="type" required>
+                    <option value="" disabled selected>Select your business type</option>
+                    <option value="Restaurant / Chop Bar">Restaurant / Chop Bar</option>
+                    <option value="Cake Seller / Bakery">Cake Seller / Bakery</option>
+                    <option value="Retail Shop">Retail Shop</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="manager">Your Name</label>
+                <input type="text" id="manager" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+                <label for="phone">WhatsApp Phone Number</label>
+                <input type="tel" id="phone" required placeholder="024 XXX XXXX">
+            </div>
+            <button type="submit" class="form-submit">Submit & Connect via WhatsApp</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 MenuBoxGh. Powered by <strong>Northbound Holdings</strong>.</p>
+        <p>Accra, Ghana</p>
+    </footer>
+
+    <script>
+        function redirectToWhatsApp(event) {
+            event.preventDefault();
+            
+            const business = document.getElementById('business').value;
+            const type = document.getElementById('type').value;
+            const manager = document.getElementById('manager').value;
+            const phone = document.getElementById('phone').value;
+
+            // Replace with your actual Northbound Holdings WhatsApp number (in international format, e.g., 233241234567)
+            const northboundWhatsAppNumber = "233000000000"; 
+
+            const message = `Hello Northbound Holdings,%0A%0AI want to set up MenuBoxGh for my business.%0A%0A*Business Name:* ${business}%0A*Type:* ${type}%0A*Manager:* ${manager}%0A*Phone:* ${phone}`;
+
+            window.open(`https://wa.me/${northboundWhatsAppNumber}?text=${message}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
