@@ -73,6 +73,7 @@
             font-size: 42px;
             margin-bottom: 20px;
             color: var(--dark);
+            line-height: 1.2;
         }
 
         .hero h1 span {
@@ -83,6 +84,9 @@
             font-size: 18px;
             color: var(--gray);
             margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn-group {
@@ -115,7 +119,7 @@
             padding: 60px 5%;
             background: white;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
 
@@ -135,6 +139,7 @@
             padding: 80px 5%;
             text-align: center;
             background: #ffffff;
+            border-top: 1px solid #eaeaea;
         }
 
         .pricing-section h2 {
@@ -263,48 +268,51 @@
 <body>
 
     <header>
-        <div class="logo">Menu<span>Box</span></div>
+        <div class="logo">MenuBox<span>Gh</span></div>
         <a href="#demo-form" class="nav-cta">Get Started</a>
     </header>
 
     <section class="hero">
-        <h1>Eliminate Table Wait Times in <span>Ghana</span></h1>
-        <p>.Create your own digital catalog. Customers view your products and send orders straight to your WhatsApp.
-No complicated apps. No high commissions.</p>
+        <h1>Simple WhatsApp Shopfront for <span>Ghana Businesses</span></h1>
+        <p>Create your own digital catalog. Customers view your products and send orders straight to your WhatsApp. No complicated apps. No high commissions.</p>
         <div class="btn-group">
             <a href="#demo-form" class="btn btn-primary">Book Setup</a>
-            <a href="https://wa.me/233504186141?text=Hello%20Northbound%20Holdings,%20I%20want%20to%20set%20up%20MenuBox%20for%20my%20lounge." target="_blank" class="btn btn-secondary">Chat on WhatsApp</a>
+            <a href="https://wa.me/233504186141?text=Hello%20Northbound%20Holdings,%20I%20want%20to%20set%20up%20MenuBoxGh%20for%20my%20business." target="_blank" class="btn btn-secondary">Chat on WhatsApp</a>
         </div>
     </section>
 
     <section class="features">
         <div class="feature-card">
-            <h3>⚡ Instant QR Scanning</h3>
-            <p>Customers scan customized table acrylic stands using any smartphone camera to launch your menu instantly on WhatsApp.</p>
+            <h3>📱 Mobile Catalog</h3>
+            <p>Easy mobile catalog with your custom photos and prices. No coding required.</p>
         </div>
         <div class="feature-card">
-            <h3>🚀 Zero Waiter Bottlenecks</h3>
-            <p>Eliminate delayed orders during peak weekend rushes in all regi5in Ghana. Orders go straight to the kitchen device.</p>
+            <h3>📲 Direct Orders</h3>
+            <p>Orders come directly to your WhatsApp, making it easy to confirm and fulfill.</p>
         </div>
         <div class="feature-card">
-            <h3>💸 Faster Table Turnover</h3>
-            <p>Streamlined ordering and bill settlements mean quicker table rotations and increased nightly revenue for your lounge.</p>
+            <h3>🔗 Custom Link & QR</h3>
+            <p>Get a custom link for your social media bios and a printable QR code for tables or storefronts.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🏪 Built for You</h3>
+            <p>Perfect for chop bars, restaurants, cake sellers, and small retail shops in Ghana.</p>
         </div>
     </section>
 
     <section class="pricing-section">
         <h2>Transparent, Predictable Pricing</h2>
-        <p>Everything you need to automate your lounge ordering system.</p>
+        <p>Everything you need to automate your business orders.</p>
         
         <div class="pricing-card">
             <h3>Standard Business Package</h3>
-            <div class="price">GHS 500 <span>one-time setup</span></div>
-            <p style="color: var(--dark); font-weight: bold; margin-bottom: 20px;">Then GHS 100 / month</p>
+            <div class="price">₵500 <span>one-time setup</span></div>
+            <p style="color: var(--dark); font-weight: bold; margin-bottom: 20px;">Then ₵100 / month</p>
             <ul class="pricing-features">
-                <li>✅ Easy Mobile Catalog with Photos and Prices</li>
-                <li>✅ Full WhatsApp Menu Integration</li>
-                <li>✅ Instant Whatsapp Order Notifications</li>
-                <li>✅ Menu Updates & Category Management</li>
+                <li>✅ Custom QR Code & Bio Link</li>
+                <li>✅ Full WhatsApp Shop Integration</li>
+                <li>✅ Instant Order Notifications</li>
+                <li>✅ Menu/Catalog Updates</li>
                 <li>✅ Dedicated Support via Northbound Holdings</li>
             </ul>
             <a href="#demo-form" class="btn btn-primary" style="display: block; text-align: center;">Get Started Now</a>
@@ -312,20 +320,26 @@ No complicated apps. No high commissions.</p>
     </section>
 
     <section id="demo-form" class="form-section">
-        <h2>Get MenuBox for Your Venue</h2>
+        <h2>Get MenuBoxGh for Your Business</h2>
         <p>Fill out the details below or chat with our team at Northbound Holdings directly.</p>
         
         <form onsubmit="redirectToWhatsApp(event)">
             <div class="form-group">
-                <label for="restaurant">Business Name</label>
-                <input type="text" id="restaurant" required placeholder="e.g. Pera Lounge">
+                <label for="business">Business Name</label>
+                <input type="text" id="business" required placeholder="e.g. Ama's Cakes or Pera Lounge">
             </div>
             <div class="form-group">
-                <label for="location">Location</label>
-                <input type="text" id="location" required placeholder="e.g. East Legon / Osu">
+                <label for="type">Business Type</label>
+                <select id="type" required>
+                    <option value="" disabled selected>Select your business type</option>
+                    <option value="Restaurant / Chop Bar">Restaurant / Chop Bar</option>
+                    <option value="Cake Seller / Bakery">Cake Seller / Bakery</option>
+                    <option value="Retail Shop">Retail Shop</option>
+                    <option value="Other">Other</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="manager">Manager Name</label>
+                <label for="manager">Your Name</label>
                 <input type="text" id="manager" required placeholder="Your full name">
             </div>
             <div class="form-group">
@@ -337,7 +351,7 @@ No complicated apps. No high commissions.</p>
     </section>
 
     <footer>
-        <p>&copy; 2026 MenuBox. Powered by <strong>Northbound Holdings</strong>.</p>
+        <p>&copy; 2026 MenuBoxGh. Powered by <strong>Northbound Holdings</strong>.</p>
         <p>Accra, Ghana</p>
     </footer>
 
@@ -345,15 +359,15 @@ No complicated apps. No high commissions.</p>
         function redirectToWhatsApp(event) {
             event.preventDefault();
             
-            const restaurant = document.getElementById('restaurant').value;
-            const location = document.getElementById('location').value;
+            const business = document.getElementById('business').value;
+            const type = document.getElementById('type').value;
             const manager = document.getElementById('manager').value;
             const phone = document.getElementById('phone').value;
 
             // Replace with your actual Northbound Holdings WhatsApp number (in international format, e.g., 233241234567)
-            const northboundWhatsAppNumber = "233504186141"; 
+            const northboundWhatsAppNumber = "233000000000"; 
 
-            const message = `Hello Northbound Holdings,%0A%0AI want to set up MenuBox for my venue.%0A%0A*Restaurant:* ${restaurant}%0A*Location:* ${location}%0A*Manager:* ${manager}%0A*Phone:* ${phone}`;
+            const message = `Hello Northbound Holdings,%0A%0AI want to set up MenuBoxGh for my business.%0A%0A*Business Name:* ${business}%0A*Type:* ${type}%0A*Manager:* ${manager}%0A*Phone:* ${phone}`;
 
             window.open(`https://wa.me/${northboundWhatsAppNumber}?text=${message}`, '_blank');
         }
