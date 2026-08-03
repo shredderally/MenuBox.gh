@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MenuBoxGH | Done-For-You Digital Menus</title>
+    <meta name="description" content="Get your restaurant a digital menu in 24 hours. Zero technical setup required.">
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --primary: #25D366; /* WhatsApp Green */
+            --primary-dark: #1da851;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+            --border: #e5e7eb;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+        a { text-decoration: none; }
+        
+        /* Typography */
+        h1, h2, h3 { font-weight: 700; line-height: 1.2; }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        h2 { font-size: 2rem; margin-bottom: 1.5rem; text-align: center; }
+        p { font-size: 1.125rem; color: var(--text-light); margin-bottom: 2rem; }
+        
+        /* Layout & Components */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.875rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+        .btn:hover { background-color: var(--primary-dark); }
+        .btn-small { padding: 0.5rem 1rem; font-size: 1rem; }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-dark); }
+        
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            text-align: center;
+            background-color: var(--white);
+        }
+        .hero p { max-width: 700px; margin: 0 auto 2.5rem auto; }
+        
+        /* How It Works */
+        .steps { padding: 5rem 0; }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .step-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .step-number {
+            background: var(--primary);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 0 auto 1rem auto;
+        }
+        
+        /* Features */
+        .features { background-color: var(--white); padding: 5rem 0; }
+        .feature-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .feature-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.125rem;
+        }
+        .feature-list li::before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .feature-list strong { color: var(--text-dark); }
+        
+        /* Final CTA */
+        .cta-section {
+            padding: 5rem 0;
+            text-align: center;
+            background-color: var(--text-dark);
+            color: var(--white);
+        }
+        .cta-section h2 { color: var(--white); }
+        .cta-section p { color: #9ca3af; }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .hero { padding: 3rem 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-inner">
+            <div class="logo">MenuBoxGH</div>
+            <a href="https://wa.me/233504186141?text=Hi%20MenuBoxGH%2C%20I%20want%20to%20get%20a%20digital%20menu%20for%20my%20restaurant." class="btn btn-small">WhatsApp Us</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Get Your Restaurant a Digital Menu in 24 Hours.</h1>
+            <p>Zero technical setup required. Stop wasting money on printed menus and high delivery app commissions. Send us a photo of your menu, and we will hand you back a sleek digital menu, a custom QR code, and local payment integration.</p>
+            <a href="https://wa.me/233504186141?text=Hi%20MenuBoxGH%2C%20I%20want%20to%20get%20a%20digital%20menu%20for%20my%20restaurant." class="btn">WhatsApp Us to Start</a>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="steps">
+        <div class="container">
+            <h2>You Cook. We Handle the Tech.</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Send Your Menu</h3>
+                    <p>Snap a picture of your current menu, write it on paper, or send a voice note. Just WhatsApp it to us.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>We Digitize It</h3>
+                    <p>Our team builds a beautiful, mobile-friendly digital menu tailored to your brand in less than 24 hours.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Get Your QR Code</h3>
+                    <p>We send you a custom link (menuboxgh.com/your-name) and a high-quality QR code ready to print for your tables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Built for Busy Chop Bars and Restaurants</h2>
+            <ul class="feature-list">
+                <li><strong>Instant Price Updates:</strong> Food costs changing? Send us a text, and we update your digital prices instantly. No more crossing out prices with a pen.</li>
+                <li><strong>Ready for Mobile Money:</strong> Customers can view the menu and pay instantly through native local payment gateways.</li>
+                <li><strong>Zero App Downloads:</strong> Your customers just point their phone camera, view, and order. No apps required.</li>
+                <li><strong>Social Media Ready:</strong> Put your custom link in your Instagram or TikTok bio to capture hungry customers online.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to look professional and serve faster?</h2>
+            <p>Join the smart food vendors upgrading their operations today.</p>
+            <br>
+            <a href="https://wa.me/233504186141?text=Hi%20MenuBoxGH%2C%20I%20want%20to%20get%20a%20digital%20menu%20for%20my%20restaurant." class="btn">Message Us on WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 northbound holdings. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
