@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MenuBoxGH | Digital Menus for Restaurants</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+    :root {
+      --ink:#0f1214; --paper:#fffefb; --soft:#f9f5f0;
+      --line:#ede8e1; --muted:#6b6560; --accent:#ff3d14;
+      --accent-dark:#e63510; --radius:16px;
+    }
+
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:Inter,sans-serif; color:var(--ink); background:var(--paper); line-height:1.5; }
+    a { color:inherit; text-decoration:none; }
+    .container { width:min(1160px,100%); margin:auto; padding:0 24px; }
+    section { padding:88px 0; }
+    h1,h2,h3,h4,.logo { font-family:"Plus Jakarta Sans",sans-serif; }
+    .section-head { max-width:700px; margin-bottom:44px; }
+    .kicker { color:var(--accent); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:12px; }
+    .title { font-size:clamp(30px,5vw,48px); line-height:1.05; letter-spacing:-.035em; }
+    .desc { color:var(--muted); margin-top:16px; max-width:620px; }
+
+    /* Navigation */
+    nav { position:sticky; top:0; z-index:10; background:rgba(255,254,251,.96); border-bottom:1px solid var(--line); }
+    .nav-inner { height:72px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { display:flex; align-items:center; gap:10px; font-weight:800; }
+    .mark { width:28px; height:28px; border-radius:8px; background:var(--ink); position:relative; }
+    .mark:after { content:""; position:absolute; inset:7px; border-radius:4px; background:var(--paper); }
+    .nav-links { display:flex; gap:26px; align-items:center; }
+    .nav-links a { color:var(--muted); font-size:14px; }
+    .menu-btn { display:none; border:1px solid var(--line); background:none; padding:10px 12px; border-radius:10px; }
+
+    /* Buttons */
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 22px; border-radius:12px; border:1px solid var(--line); font-weight:600; font-size:14px; cursor:pointer; }
+    .primary { background:var(--accent); color:white; border-color:var(--accent); }
+    .primary:hover { background:var(--accent-dark); }
+    .ghost:hover { background:var(--soft); }
+
+    /* Hero */
+    .hero { padding:72px 0; }
+    .hero-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center; }
+    .eyebrow { display:inline-block; padding:6px 14px; border:1px solid var(--line); border-radius:999px; background:var(--soft); color:var(--muted); font-size:12px; margin-bottom:20px; }
+    .hero h1 { font-size:clamp(38px,6vw,60px); line-height:.98; letter-spacing:-.045em; }
+    .hero h1 span { display:block; color:var(--muted); font-weight:600; margin-top:8px; }
+    .hero-copy { color:var(--muted); font-size:18px; max-width:560px; margin:20px 0 28px; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .trust { margin-top:32px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+
+    /* Phone preview */
+    .phone { width:300px; margin:auto; padding:10px; border-radius:36px; background:var(--ink); box-shadow:0 20px 50px #0f121426; }
+    .screen { min-height:520px; padding:24px 18px; border-radius:28px; background:white; }
+    .restaurant { font-weight:800; font-size:22px; }
+    .menu-item { display:flex; justify-content:space-between; gap:16px; padding:16px 0; border-bottom:1px solid var(--line); }
+    .menu-item small { display:block; color:var(--muted); margin-top:4px; }
+    .price { font-weight:700; white-space:nowrap; }
+    .qr { margin-top:20px; padding:16px; text-align:center; border:1px solid var(--line); border-radius:12px; font-size:12px; }
+    .qr-box { width:90px; height:90px; margin:0 auto 8px; background:repeating-linear-gradient(45deg,#111 0 5px,#fff 5px 10px); }
+
+    /* Cards */
+    .steps-grid,.features-grid,.pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .step,.feature,.price-card { padding:24px; border:1px solid var(--line); border-radius:var(--radius); background:white; }
+    .step-number { color:var(--accent); font-weight:800; margin-bottom:14px; }
+    .step p,.feature p,.price-card p { color:var(--muted); font-size:14px; margin-top:8px; }
+    .features { background:var(--ink); color:var(--paper); }
+    .features .kicker { color:var(--paper); opacity:.65; }
+    .features-grid { margin-top:44px; }
+    .feature { background:#ffffff08; border-color:#ffffff1f; }
+    .feature-icon { font-size:20px; margin-bottom:18px; }
+
+    /* POV */
+    .pov { background:var(--soft); }
+    .pov-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+    .checks { list-style:none; margin-top:24px; }
+    .checks li { margin:12px 0; }
+    .checks li:before { content:"✓"; color:var(--accent); font-weight:800; margin-right:10px; }
+    .demo-box { max-width:340px; margin:auto; padding:10px; border-radius:32px; background:var(--ink); }
+    .demo-box video { width:100%; border-radius:24px; display:block; min-height:500px; object-fit:cover; background:#222; }
+
+    /* Pricing */
+    .pricing { background:var(--soft); }
+    .price-card { display:flex; flex-direction:column; gap:18px; }
+    .price-card.featured { border:2px solid var(--ink); transform:translateY(-6px); }
+    .price { font-size:28px; font-family:"Plus Jakarta Sans"; }
+    .price-card ul { list-style:none; color:var(--muted); font-size:14px; }
+    .price-card li { margin:10px 0; }
+    .price-card li:before { content:"✓"; color:var(--accent); margin-right:8px; }
+    .price-card .btn { margin-top:auto; }
+
+    /* Contact */
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; }
+    .contact-methods { display:grid; gap:10px; margin-top:24px; }
+    form { display:grid; gap:14px; }
+    label span { display:block; font-size:13px; font-weight:600; margin-bottom:6px; }
+    input,select { width:100%; height:48px; border:1px solid var(--line); border-radius:10px; padding:0 14px; background:white; font:inherit; }
+    .hint { color:var(--muted); font-size:12px; text-align:center; }
+
+    footer { background:var(--ink); color:var(--paper); padding:56px 0 24px; }
+    .footer-grid { display:grid; grid-template-columns:1fr auto; gap:40px; }
+    .footer-links { display:flex; gap:50px; }
+    .footer-col { display:grid; gap:9px; font-size:13px; }
+    .footer-col h4 { margin-bottom:6px; }
+    .footer-col a { opacity:.7; }
+    .footer-bottom { margin-top:40px; padding-top:20px; border-top:1px solid #ffffff1f; color:#ffffff99; font-size:12px; }
+
+    @media(max-width:800px) {
+      .nav-links { display:none; }
+      .menu-btn { display:block; }
+      .hero-grid,.pov-grid,.contact-grid { grid-template-columns:1fr; }
+      .steps-grid,.features-grid,.pricing-grid { grid-template-columns:1fr 1fr; }
+      .hero { padding-top:48px; }
+      .phone { width:280px; }
+      .footer-grid { grid-template-columns:1fr; }
+    }
+    @media(max-width:520px) {
+      section { padding:64px 0; }
+      .steps-grid,.features-grid,.pricing-grid { grid-template-columns:1fr; }
+      .price-card.featured { transform:none; }
+      .footer-links { flex-direction:column; gap:24px; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="logo" href="#"><span class="mark"></span>MenuBoxGH</a>
+      <div class="nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+    <div id="mobileMenu" class="container" style="display:none;padding-bottom:20px">
+      <div style="display:grid;gap:12px">
+        <a href="#how-it-works">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">QR menus • WhatsApp ordering • Ghana</span>
+          <h1>Turn tables faster.<span>Stop losing orders to DMs.</span></h1>
+          <p class="hero-copy">Professional digital menus built for restaurants. Customers scan, browse, order and get a clear path to payment.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://wa.me/233539491610?text=Hi%20MenuBoxGH%2C%20I%20want%20to%20get%20MenuBoxGH%20for%20my%20restaurant" target="_blank">Get MenuBoxGH</a>
+            <a class="btn ghost" href="#pov">See customer flow</a>
+          </div>
+          <div class="trust">Built in Accra • No commission • Your customers, your data</div>
+        </div>
+
+        <div class="phone">
+          <div class="screen">
+            <div class="restaurant">ADUNU</div>
+            <p style="color:var(--muted);font-size:13px">Today's menu</p>
+            <div class="menu-item"><div>Jollof & Chicken<small>Spiced rice, chicken, salad</small></div><div class="price">GHS 75</div></div>
+            <div class="menu-item"><div>Waakye Deluxe<small>Beans, rice, gari, shito</small></div><div class="price">GHS 65</div></div>
+            <div class="menu-item"><div>Kelewele<small>Spiced plantain, onions</small></div><div class="price">GHS 35</div></div>
+            <div class="qr"><div class="qr-box"></div>MENUBOX.GH/ADUNU<br>Scan to order</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pov" class="pov">
+      <div class="container pov-grid">
+        <div>
+          <div class="kicker">Customer POV</div>
+          <h2 class="title">What your customer sees when they scan.</h2>
+          <p class="desc">No confusing PDF. No Instagram DM back-and-forth. Just a clean, fast menu.</p>
+          <ul class="checks">
+            <li>Opens instantly, no download</li>
+            <li>Photos, categories and GHS prices</li>
+            <li>Table, takeaway or delivery flow</li>
+            <li>Cash in Standard; Paystack in Premium</li>
+          </ul>
+        </div>
+        <div class="demo-box">
+          <!-- Replace with your real demo video -->
+          <video controls autoplay muted loop poster="assets/founder.jpg">
+            <source src="assets/demo.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">How it works</div>
+          <h2 class="title">From scan to kitchen in 5 steps</h2>
+        </div>
+        <div class="steps-grid">
+          <div class="step"><div class="step-number">01</div><h3>Scan</h3><p>Customer scans the QR. No app needed.</p></div>
+          <div class="step"><div class="step-number">02</div><h3>Browse</h3><p>Clean menu with categories, photos and prices.</p></div>
+          <div class="step"><div class="step-number">03</div><h3>Order</h3><p>Select items, table number or delivery.</p></div>
+          <div class="step"><div class="step-number">04</div><h3>Pay</h3><p>Standard: cash. Premium: Paystack MoMo, card and bank.</p></div>
+          <div class="step"><div class="step-number">05</div><h3>Receive</h3><p>Kitchen gets a structured WhatsApp order.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Built for real restaurant ops</div>
+          <h2 class="title">Everything you need, nothing you don't.</h2>
+        </div>
+        <div id="featuresGrid" class="features-grid"></div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">Pricing</div>
+          <h2 class="title">Choose the setup that fits your restaurant.</h2>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3>Standard</h3><div class="price">GHS 3,000</div><p>Setup + GHS 400/month</p>
+            <ul><li>Digital menu</li><li>QR access</li><li>WhatsApp ordering</li><li>Cash payments</li></ul>
+            <a class="btn ghost" href="#contact">Get Standard</a>
+          </article>
+          <article class="price-card featured">
+            <h3>Premium</h3><div class="price">GHS 4,000</div><p>Setup + GHS 500/month</p>
+            <ul><li>Everything in Standard</li><li>Paystack MoMo, card & bank</li><li>Premium presentation</li><li>Social links</li></ul>
+            <a class="btn primary" href="#contact">Get Premium</a>
+          </article>
+          <article class="price-card">
+            <h3>Custom</h3><div class="price">Let's talk</div><p>Built around your restaurant's needs.</p>
+            <ul><li>Custom workflow</li><li>Custom features</li><li>Restaurant-specific setup</li></ul>
+            <a class="btn ghost" href="#contact">Message the team</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid">
+        <div>
+          <div class="kicker">Talk to a human</div>
+          <h2 class="title">We'll set you up in 72 hours.</h2>
+          <p class="desc">Send a WhatsApp or email. You talk directly to the founder.</p>
+          <div class="contact-methods">
+            <a href="https://wa.me/233539491610" target="_blank">WhatsApp: +233 53 949 1610</a>
+            <a href="mailto:zechipsani9@gmail.com">zechipsani9@gmail.com</a>
+          </div>
+        </div>
+
+        <form id="leadForm">
+          <label><span>Restaurant name</span><input name="restaurant" placeholder="ADUNU" required></label>
+          <label><span>Your name</span><input name="name" placeholder="Kwame" required></label>
+          <label><span>WhatsApp number</span><input name="phone" type="tel" placeholder="055 123 4567" required></label>
+          <label><span>Which plan?</span>
+            <select name="plan">
+              <option>STANDARD — GHS 3,000 setup + GHS 400/mo</option>
+              <option>PREMIUM — GHS 4,000 setup + GHS 500/mo</option>
+              <option>CUSTOM — Let's build what your restaurant needs</option>
+            </select>
+          </label>
+          <button class="btn primary" type="submit">Send details via WhatsApp</button>
+          <p class="hint">Opens WhatsApp with a pre-filled message. No data stored.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="logo">MenuBoxGH</div>
+        <p style="color:#ffffffaa;margin-top:10px">Professional QR menus for Ghanaian restaurants.<br>No commission. Your customers, your data.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col"><h4>Product</h4><a href="#how-it-works">How it works</a><a href="#features">Features</a><a href="#pricing">Pricing</a></div>
+        <div class="footer-col"><h4>Contact</h4><a href="mailto:zechipsani9@gmail.com">Email</a><a href="https://wa.me/233539491610">WhatsApp</a></div>
+      </div>
+    </div>
+    <div class="container footer-bottom">© 2026 MenuBoxGH. Built in Accra.</div>
+  </footer>
+
+  <script>
+    // Edit this list to change the feature cards.
+    const features = [
+      ["≡", "Digital menu", "Professional layout, photos, categories and availability."],
+      ["◫", "QR access", "Unique QR per restaurant and table."],
+      ["◐", "Mobile-first", "Fast on 3G and low-end Android phones."],
+      ["⌖", "Dine-in table", "Table number is included in the order."],
+      ["⤳", "Takeaway", "Pickup time and packaging notes."],
+      ["↗", "Delivery", "Address and delivery information."],
+      ["₵", "Paystack (Premium)", "MoMo, card and bank payments."],
+      ["✦", "WhatsApp structured", "Customer, table, items, total and payment status."],
+      ["↻", "Easy updates", "Change prices or availability quickly."]
+    ];
+
+    document.getElementById("featuresGrid").innerHTML = features.map(([icon, title, text]) => `
+      <article class="feature">
+        <div class="feature-icon">${icon}</div>
+        <h3>${title}</h3>
+        <p>${text}</p>
+      </article>
+    `).join("");
+
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = menu.style.display === "none" ? "block" : "none";
+    }
+
+    document.getElementById("leadForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      const message = [
+        "Hi MenuBoxGH, I want a menu for my restaurant.",
+        `Restaurant: ${data.get("restaurant")}`,
+        `Name: ${data.get("name")}`,
+        `WhatsApp: ${data.get("phone")}`,
+        `Plan: ${data.get("plan")}`
+      ].join("\n");
+
+      window.open(
+        `https://wa.me/233539491610?text=${encodeURIComponent(message)}`,
+        "_blank"
+      );
+    });
+  </script>
+</body>
+</html>
